@@ -1,6 +1,6 @@
 import http from '../http-common.js'
 
-const getListJobs = (username) => {
+const getListJobs = () => {
     return http.get(`/fakeJob`)
 }
 
