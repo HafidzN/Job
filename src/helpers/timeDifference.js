@@ -10,8 +10,7 @@ function enhanceDays(time) {
 
 
   function timeDiffCalc(dateFuture, dateNow) {
-    let diffInMilliSeconds = Math.abs((dateFuture - dateNow) / 1000);
-    console.log('asd    ', diffInMilliSeconds)
+    let diffInMilliSeconds = Math.abs((dateFuture - dateNow) / 1000)
 
     const df = new Date(dateFuture)
     const dn = new Date(dateNow)
