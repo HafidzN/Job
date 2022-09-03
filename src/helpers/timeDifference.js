@@ -59,7 +59,6 @@ function enhanceDays(time) {
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
      timeDiff : function (propsTime) {
-        console.log(enhanceDays(propsTime))
         return timeDiffCalc(new Date(), new Date(enhanceDays(propsTime)))
     }  
 }
