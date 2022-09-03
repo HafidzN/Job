@@ -1,8 +1,7 @@
 import React, { useState } from "react"
-import { Link } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { createJob } from "../actions/index"
-import './Home.scss'
+import './Create.scss'
 
 function Create() {
     const initialJobState = {
@@ -93,16 +92,8 @@ function Create() {
 
   return(
     <div className=''>
-      <div className='' style={{padding: '2rem'}}>
-        <section className='section h-flex'>
-            <Link to={'/'} className="home__main-logo" >
-              KLOB</Link>
-            <Link to={'/buat-lowongan-pekerjaan'} className="home__link-2" style={{ marginLeft: 'auto'}}>
-                Buat Lowongan
-            </Link>
-        </section>
-
-        <h1>Buat Lowongan</h1>
+      <div className='main-registration-container' style={{padding: '2rem'}}>
+        <h1 className="main__title">Buat Lowongan</h1>
 
         {submitted ? (
         <div>
@@ -126,7 +117,8 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {dirty && !values.corporateLogo && <div className="error">Please enter a company logo</div>}
+                    <p>Dalam bentuk link url</p>
+                    {dirty && !values.corporateLogo && <div className="errorMsg">Please enter a company logo</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -141,7 +133,7 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {dirty && !values.corporateName && <div className="error">Please enter a company name</div>}
+                    {dirty && !values.corporateName && <div className="errorMsg">Please enter a company name</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -156,7 +148,7 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {dirty && !values.positionName && <div className="error">Please enter a positionName</div>}
+                    {dirty && !values.positionName && <div className="errorMsg">Please enter a positionName</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -171,12 +163,12 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {dirty && !values.status && <div className="error">Please enter a status</div>}
+                    {dirty && !values.status && <div className="errorMsg">Please enter a status</div>}
                 </fieldset>
                 <fieldset>
                     <label>
                     <p>Kisaran Gaji Karyawan</p>
-                    <div className="h-flex">
+                    <div className="h-flex" style={{width: '91.8%'}}>
                         <input
                             id="job-salary-from"
                             className="form-field"
@@ -186,7 +178,7 @@ function Create() {
                             value={values.salaryFrom}
                             onChange={handleInputChange}
                         />
-                            <div>Sampai Dengan: </div>
+                            <div style={{marginLeft: '2rem', marginRight: '2rem'}}>Sampai Dengan: </div>
                             <input
                             id="job-salary-to"
                             className="form-field"
@@ -198,7 +190,7 @@ function Create() {
                         />
                     </div>
                     </label>
-                    {dirty && (!values.salaryFrom || !values.salaryTo) && <div className="error">Please enter valid salary range</div>}
+                    {dirty && (!values.salaryFrom || !values.salaryTo) && <div className="errorMsg">Please enter valid salary range</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -213,9 +205,9 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {dirty && !values.postedDate && <div className="error">Please enter a postedDate</div>}
+                    {dirty && !values.postedDate && <div className="errorMsg">Please enter a postedDate</div>}
                 </fieldset>
-                <button type="submit" style={{ marginTop: '2rem'}}>Simpan</button>
+                <button type="submit" className="submit">SIMPAN</button>
             </form>
         )
         }

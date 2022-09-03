@@ -1,0 +1,49 @@
+.main {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+
+    &__nav {
+        padding: 2rem;
+        font-size: 16px;
+        box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+        background-color: rgb(255, 255, 255);
+        position: sticky;
+        top: 0px;
+        z-index: 1000;
+    }
+
+    &__directions {
+        margin-left: auto;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 16px
+    }
+
+}
+
+.h-text-align-right {
+    text-align: right
+}
+
+.h-fs-12 {
+    font-size: 12px;
+}
+
+.h-flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.h-items-center {
+    align-items: center
+}
+
+button {
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    border: none;
+    padding: 8px 6px;
+}
+

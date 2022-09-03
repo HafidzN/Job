@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getListJobs, updateJob } from "../actions/index.js"
 import { useParams } from "react-router-dom";
-import { Link } from 'react-router-dom'
+import Img from './Img'
 
 import './Detail.scss'
 
@@ -49,19 +49,12 @@ function Detail () {
   return (
     <div className=''>
       <div className='' style={{padding: '2rem'}}>
-      <section className='section h-flex'>
-          <div className="">
-            <Link to={'/'} className="home__main-logo" >
-              KLOB</Link>
-          </div>
-          <Link to={'/buat-lowongan-pekerjaan'} className="home__link-2" style={{ marginLeft: 'auto'}}>
-            Buat Lowongan</Link>
-      </section>
-        Detail Lowongan Pekerjaan:
-        <hr />
+        <div className="main__title">
+          Detail Lowongan Pekerjaan:  
+        </div>
         <section className='section'>
           <div className="detail__logo">
-            <img src="" alt="" />
+            <Img corporateLogo={currentJob.corporateLogo} corporateName={currentJob.corporateName} />
           </div>
           <div className="detail__company-name">{currentJob.corporateName}</div>
           <p>Kewajiban:</p>

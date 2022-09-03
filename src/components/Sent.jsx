@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
-import { getListJobs, updateJob } from "../actions/index.js"
-// import noimg from "../assets/no-img.jpg"
+import { updateJob } from "../actions/index.js"
+import Img from './Img'
 import './Home.scss'
 
 function Home () {
@@ -28,27 +28,16 @@ function Home () {
     return (
       <div className=''>
         <div className='' style={{padding: '2rem'}}>
-        <section className='section h-flex'>
-            <div className="">
-              <Link to={'/'} className="home__main-logo" >
-                KLOB</Link>
-            </div>
-            <Link to={'/buat-lowongan-pekerjaan'} className="home__link-2" style={{ marginLeft: 'auto'}}>
-              Buat Lowongan</Link>
-            <Link to={'/lamaran-terkirim'} className="home__link-2" style={{ marginLeft: '2rem'}}>
-            Lamaran Terkirim</Link>
-        </section>
-          Lowongan Pekerjaan:
-          <hr />
+          <h1 className="main__title">Lamaran Terkirim:</h1>
           <section className='section'>
             <ul className='home__container'>
               {
-                (appliedJobs || []).map(job => (
+                appliedJobs.length > 0 ? appliedJobs.map(job => (
                   <li key={job.jobVacancyCode} className="home__list">
                     <div className="home__box">
                         <div className="home_pinned">
                           <div className="home__photo">
-                            <img src={job.corporateLogo} alt={job.corporateName} />
+                            <Img corporateLogo={job.corporateLogo} corporateName={job.corporateName} />
                           </div>
                           <div className="home__title">
                             <div className="home__main-title">
@@ -78,13 +67,14 @@ function Home () {
                           </Link>
                           
                           <div>
-                            <button className={job.applied? "" : "not-applied"} onClick={() => updateApplication(job)}>{job.applied? "Batalkan Lamaran" : "Kirim Lamaran"}</button>
+                            <button className="cancel-application" onClick={() => updateApplication(job)}>{job.applied? "Batalkan Lamaran" : "Kirim Lamaran"}</button>
                           </div>
   
                         </div>
                     </div>
                   </li>
-                ))
+                )) 
+                : <div>Belum ada lamaran terkirim</div>
               }
             </ul>
           </section>
