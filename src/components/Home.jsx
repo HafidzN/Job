@@ -33,6 +33,8 @@ function Home () {
           </div>
           <Link to={'/buat-lowongan-pekerjaan'} className="home__link-2" style={{ marginLeft: 'auto'}}>
             Buat Lowongan</Link>
+          <Link to={'/lamaran-terkirim'} className="home__link-2" style={{ marginLeft: '2rem'}}>
+          Lamaran Terkirim</Link>
       </section>
         Lowongan Pekerjaan:
         <hr />

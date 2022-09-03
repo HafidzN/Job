@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import {
-  findJobById
-} from "../actions/index"
+import { useDispatch, useSelector } from "react-redux"
+import { getListJobs, updateJob } from "../actions/index.js"
+import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom'
 
 import './Detail.scss'
@@ -22,6 +21,29 @@ function Detail () {
     status: ''
 }
   const [currentJob, setCurrentJob] = useState(initialJobState)
+
+  const dispatch = useDispatch()
+  const jobs = useSelector(state => state.jobReducers)
+
+  const { jobVacancyCode } = useParams()
+
+  useEffect(() => {
+    if (jobs.length === 0) dispatch(getListJobs())
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
+    if (jobs.length > 0) setCurrentJob(jobs.find(job => job.jobVacancyCode === jobVacancyCode))
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [jobs])
+
+
+  const updateApplication = (payload) => {
+    dispatch(updateJob({
+      ...payload,
+      applied: !payload.applied
+    }))
+  }
    
 
   return (
@@ -43,7 +65,7 @@ function Detail () {
           </div>
           <div className="detail__company-name">{currentJob.corporateName}</div>
           <p>Kewajiban:</p>
-          <div className="detail__desc">{currentJob.descriptions}</div>
+          <div className="detail__desc" dangerouslySetInnerHTML={{ __html: currentJob.descriptions }}></div>
           <div className="detail__job-name">{currentJob.positionName}</div>
           <div className="h-flex">
             <div>Status</div>
@@ -54,7 +76,9 @@ function Detail () {
             <div className="detail__bold">{currentJob.salaryFrom} - {currentJob.salaryTo}</div>
           </div>
           <div className="detail__posted-date">{currentJob.postedDate}</div>
-          <button>Kirim Lamaran</button>
+          <div>
+            <button className={currentJob.applied? "" : "not-applied"} onClick={() => updateApplication(currentJob)}>{currentJob.applied? "Batalkan Lamaran" : "Kirim Lamaran"}</button>
+          </div>
         </section>
       </div>
     </div>

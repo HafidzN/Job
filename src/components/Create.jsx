@@ -18,6 +18,7 @@ function Create() {
     const [submitted, setSubmitted] = useState(false)
     const [valid, setValid] = useState(false)
     const [values, setValues] = useState(initialJobState)
+    const [dirty, setDirty] = useState(false)
 
     const handleInputChange =  (event) => {
         event.persist()
@@ -25,6 +26,7 @@ function Create() {
     }
 
     const handleSubmit = (event) => {
+        setDirty(true)
         event.preventDefault()
         if(    values.corporateLogo 
             && values.corporateName 
@@ -124,7 +126,7 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {submitted && !values.corporateLogo && <div className="error">Please enter a company logo</div>}
+                    {dirty && !values.corporateLogo && <div className="error">Please enter a company logo</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -139,7 +141,7 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {submitted && !values.corporateName && <div className="error">Please enter a company name</div>}
+                    {dirty && !values.corporateName && <div className="error">Please enter a company name</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -154,7 +156,7 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {submitted && !values.positionName && <div className="error">Please enter a positionName</div>}
+                    {dirty && !values.positionName && <div className="error">Please enter a positionName</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -169,7 +171,7 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {submitted && !values.status && <div className="error">Please enter a status</div>}
+                    {dirty && !values.status && <div className="error">Please enter a status</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -196,7 +198,7 @@ function Create() {
                         />
                     </div>
                     </label>
-                    {submitted && (!values.salaryFrom || !values.salaryTo) && <div className="error">Please enter valid salary range</div>}
+                    {dirty && (!values.salaryFrom || !values.salaryTo) && <div className="error">Please enter valid salary range</div>}
                 </fieldset>
                 <fieldset>
                     <label>
@@ -211,7 +213,7 @@ function Create() {
                         onChange={handleInputChange}
                     />
                     </label>
-                    {submitted && !values.postedDate && <div className="error">Please enter a postedDate</div>}
+                    {dirty && !values.postedDate && <div className="error">Please enter a postedDate</div>}
                 </fieldset>
                 <button type="submit" style={{ marginTop: '2rem'}}>Simpan</button>
             </form>
