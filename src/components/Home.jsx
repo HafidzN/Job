@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 import { getListJobs, updateJob } from "../actions/index.js"
+import util from '../helpers/timeDifference'
 import Img from './Img'
 import './Home.scss'
 
@@ -57,7 +58,7 @@ function Home () {
                         </p>
 
                         <div className="h-text-align-right h-fs-12">
-                          {job.postedDate || ''}
+                          {job.postedDate ? util.timeDiff(job.postedDate): ''}
                         </div>
 
                         <Link to={`/lowongan/detail/${job.jobVacancyCode}`} className="home__link-2" style={{ marginLeft: 'auto'}}>

@@ -172,7 +172,7 @@ function Create() {
                         <input
                             id="job-salary-from"
                             className="form-field"
-                            type="text"
+                            type="number"
                             placeholder=""
                             name="salaryFrom"
                             value={values.salaryFrom}
@@ -182,7 +182,7 @@ function Create() {
                             <input
                             id="job-salary-to"
                             className="form-field"
-                            type="text"
+                            type="number"
                             placeholder=""
                             name="salaryTo"
                             value={values.salaryTo}

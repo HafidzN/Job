@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getListJobs, updateJob } from "../actions/index.js"
 import { useParams } from "react-router-dom";
 import Img from './Img'
+import util from '../helpers/timeDifference'
 
 import './Detail.scss'
 
@@ -68,7 +69,7 @@ function Detail () {
             <div>Gaji</div>
             <div className="detail__bold">{currentJob.salaryFrom} - {currentJob.salaryTo}</div>
           </div>
-          <div className="detail__posted-date">{currentJob.postedDate}</div>
+          <div className="detail__posted-date">{currentJob.postedDate ? util.timeDiff(currentJob.postedDate): ''}</div>
           <div>
             <button className={currentJob.applied? "" : "not-applied"} onClick={() => updateApplication(currentJob)}>{currentJob.applied? "Batalkan Lamaran" : "Kirim Lamaran"}</button>
           </div>
