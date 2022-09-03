@@ -12,7 +12,7 @@ export const getListJobs = () => async (dispatch) => {
         const res = await Services.getListJobs()
         dispatch({
           type: RETRIEVE_JOBS,
-          payload: res.data,
+          payload: res?.data ?? db.fakeJob,
         })
       } catch (err) {
         dispatch({
