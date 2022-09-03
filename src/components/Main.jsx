@@ -12,7 +12,7 @@ class Main extends Component {
             <Route exact path="/" element={<Home/>}/>
             <Route exact path="/buat-lowongan-pekerjaan" element={<Create/>}/>
             <Route exact path="/lamaran-terkirim" element={<Sent/>}/>
-            <Route exact path="/lowongan/detail/:id" element={<Detail/>}/>
+            <Route exact path="/lowongan/detail/:jobVacancyCode" element={<Detail/>}/>
         </Routes>
     )
   }

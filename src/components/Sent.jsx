@@ -7,7 +7,7 @@ import './Home.scss'
 
 function Home () {
     const dispatch = useDispatch()
-    const jobs = useSelector(state => state.githubReducers)
+    const jobs = useSelector(state => state.jobReducers)
 
 
     useEffect(() => {

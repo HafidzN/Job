@@ -1,5 +1,5 @@
 import { combineReducers } from "redux"
-import githubReducers from "./jobReducers"
+import jobReducers from "./jobReducers"
 export default combineReducers({
-  githubReducers,
+  jobReducers,
 })

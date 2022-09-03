@@ -1,8 +1,27 @@
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  findJobById
+} from "../actions/index"
 import { Link } from 'react-router-dom'
 
-import './Home.scss'
+import './Detail.scss'
 
-function Home () {
+function Detail () {
+  const initialJobState = {
+    applied: false,
+    corporateId: '',
+    corporateLogo:'',
+    corporateName: '',
+    descriptions: '',
+    jobVacancyCode: '',
+    positionName: '',
+    postedDate: '',
+    salaryFrom: 0,
+    salaryTo: 0,
+    status: ''
+}
+  const [currentJob, setCurrentJob] = useState(initialJobState)
    
 
   return (
@@ -22,19 +41,19 @@ function Home () {
           <div className="detail__logo">
             <img src="" alt="" />
           </div>
-          <div className="detail__company-name">Sinar Mas</div>
+          <div className="detail__company-name">{currentJob.corporateName}</div>
           <p>Kewajiban:</p>
-          <div className="detail__desc">raw html</div>
-          <div className="detail__job-name">Accounting</div>
+          <div className="detail__desc">{currentJob.descriptions}</div>
+          <div className="detail__job-name">{currentJob.positionName}</div>
           <div className="h-flex">
             <div>Status</div>
-            <div className="detail__bold">Karyawan Tetap</div>
+            <div className="detail__bold">{currentJob.status}</div>
           </div>
           <div className="h-flex">
             <div>Gaji</div>
-            <div className="detail__bold">10.000.000 - 20.000.000</div>
+            <div className="detail__bold">{currentJob.salaryFrom} - {currentJob.salaryTo}</div>
           </div>
-          <div className="detail__posted-date">29 days ago</div>
+          <div className="detail__posted-date">{currentJob.postedDate}</div>
           <button>Kirim Lamaran</button>
         </section>
       </div>
@@ -42,4 +61,4 @@ function Home () {
   )
 }
 
-export default Home
+export default Detail
